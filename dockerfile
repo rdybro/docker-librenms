@@ -1,4 +1,4 @@
-FROM library/ubuntu:latest
+FROM library/ubuntu:16.04
 LABEL maintainer="Rasmus Dybro Larsen"
 
 RUN apt-get -y update && apt-get install -y libapache2-mod-php7.0 php7.0-cli php7.0-mysql php7.0-gd php7.0-snmp php-pear php7.0-curl snmp graphviz php7.0-mcrypt php7.0-json apache2 fping imagemagick whois mtr-tiny nmap python-mysqldb snmpd php-net-ipv4 php-net-ipv6 rrdtool git
