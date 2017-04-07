@@ -20,6 +20,7 @@ RUN git clone https://github.com/librenms/librenms.git /opt/librenms
 RUN mkdir /opt/librenms/rrd /opt/librenms/logs
 RUN chmod 775 /opt/librenms/rrd
 
+ADD config.php /opt/librenms/config.php
 ADD librenms.conf /etc/apache2/sites-available/librenms.conf
 
 RUN a2ensite librenms.conf
@@ -39,7 +40,7 @@ ENV APACHE_SERVERALIAS librenms.localhost
 ENV APACHE_DOCUMENTROOT /var/www
 
 EXPOSE 80
+VOLUME /opt/librenms
 
-#CMD /usr/sbin/apache2ctl -D FOREGROUND
-#CMD /usr/sbin/apache2 -D FOREGROUND
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+#CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
