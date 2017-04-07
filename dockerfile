@@ -1,7 +1,8 @@
 FROM library/ubuntu:16.04
 LABEL maintainer="Rasmus Dybro Larsen"
 
-RUN apt-get -y update && apt-get install -y libapache2-mod-php7.0 php7.0-cli php7.0-mysql php7.0-gd php7.0-snmp php-pear php7.0-curl snmp graphviz php7.0-mcrypt php7.0-json apache2 fping imagemagick whois mtr-tiny nmap python-mysqldb snmpd php-net-ipv4 php-net-ipv6 rrdtool git
+RUN apt-get -y update
+RUN apt-get -y install libapache2-mod-php7.0 php7.0-cli php7.0-mysql php7.0-gd php7.0-snmp php-pear php7.0-curl snmp graphviz php7.0-mcrypt php7.0-json apache2 fping imagemagick whois mtr-tiny nmap python-mysqldb snmpd php-net-ipv4 php-net-ipv6 rrdtool git
 
 # REMEMBER:
 # In /etc/php/7.0/apache2/php.ini and /etc/php/7.0/cli/php.ini, ensure date.timezone is set to your preferred time zone. See http://php.net/manual/en/timezones.php for a list of supported timezones. Valid examples are: "America/New_York", "Australia/Brisbane", "Etc/UTC".
@@ -32,9 +33,9 @@ ENV APACHE_LOG_DIR /var/log/apache2
 ENV APACHE_PID_FILE /var/run/apache2.pid
 ENV APACHE_RUN_DIR /var/run/apache2
 ENV APACHE_LOCK_DIR /var/lock/apache2
-ENV APACHE_SERVERADMIN admin@localhost
+ENV APACHE_SERVERADMIN librenms@localhost
 ENV APACHE_SERVERNAME localhost
-ENV APACHE_SERVERALIAS docker.localhost
+ENV APACHE_SERVERALIAS librenms.localhost
 ENV APACHE_DOCUMENTROOT /var/www
 
 EXPOSE 80
